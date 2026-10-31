@@ -1,0 +1,211 @@
+/* Marmoraria Florencio — site-demo. Direção: "a sala escura" (pedras iluminadas num fundo grafite). */
+:root {
+  --bg: #151615;          /* grafite, como granito polido */
+  --surface: #202220;
+  --ink: #e6e3dc;
+  --muted: #a8a49c;
+  --stone: #d8cdb8;       /* tom de pedra clara: só no botão principal e no cartão */
+  --stone-ink: #151615;
+
+  --step-small: 0.9375rem;
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2.25rem, 1.3rem + 3.4vw, 4.25rem);
+
+  --font: 'Archivo', system-ui, sans-serif;
+  --m: clamp(16px, 3vw, 48px);
+  --gap-section: clamp(96px, 12vw, 200px);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 var(--step-body)/1.6 var(--font); overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { font-weight: 400; margin: 0; letter-spacing: -0.02em; line-height: 1; text-wrap: balance; }
+h2 { font-size: var(--step-head); }
+p { margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--stone); outline-offset: 3px; }
+::selection { background: var(--stone); color: var(--stone-ink); }
+.note { font-size: var(--step-small); color: var(--muted); }
+.cap { font-size: var(--step-small); color: var(--muted); margin-top: 10px; }
+.link { text-decoration: underline; text-underline-offset: 5px; background: none; border: 0; padding: 0; }
+.link:hover { color: var(--stone); }
+
+.demo-bar { background: #000; color: var(--ink); text-align: center; font-size: var(--step-small); padding: 7px var(--m); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; border: 0; text-decoration: none; font-weight: 600;
+  background: var(--stone); color: var(--stone-ink); min-height: 54px; padding: 14px 28px;
+  transition: background .2s, transform .15s var(--ease);
+}
+.btn:hover { background: #ece3d1; }
+.btn:active { transform: scale(.98); }
+.btn-wide { width: 100%; }
+
+/* Topo */
+.hero { position: relative; height: calc(100svh - 34px); min-height: 600px; display: grid; place-items: center; padding: var(--m); overflow: hidden; }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.62); }
+.hero-card {
+  position: relative; width: min(820px, 100%); min-height: 60%; background: var(--stone); color: var(--stone-ink);
+  padding: 32px; display: flex; flex-direction: column; gap: 28px;
+}
+.hero-name { display: flex; justify-content: space-between; font-size: var(--step-lead); font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; }
+.hero h1 { font-size: clamp(2.75rem, 1.2rem + 5vw, 5.5rem); max-width: 12ch; }
+.hero-facts { font-size: var(--step-lead); line-height: 1.35; max-width: 34ch; }
+.hero-foot { margin-top: auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
+.hero-foot .note { color: #5a554c; }
+.hero-foot .link { justify-self: end; }
+.hero-foot .btn { background: var(--stone-ink); color: var(--stone); }
+.hero-foot .btn:hover { background: #2b2d2b; }
+.js .hero-card { animation: rise 1s var(--ease) both .15s; }
+@keyframes rise { from { opacity: 0; transform: translateY(28px); } }
+
+/* Onde a pedra entra */
+.where { display: grid; grid-template-columns: 5fr 1fr 6fr; padding: var(--gap-section) var(--m) 0; align-items: start; }
+.where-photo { position: sticky; top: 10vh; }
+.where-photo img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; transition: opacity .3s; }
+.where-photo img.swap { opacity: 0; }
+.where-list { grid-column: 3; }
+.where-list ul { list-style: none; margin: 48px 0 0; padding: 0; }
+.where-list li button {
+  width: 100%; text-align: left; background: none; border: 0; padding: 18px 0;
+  font-size: clamp(1.4rem, 1rem + 1.4vw, 2.1rem); line-height: 1.15; color: var(--muted); transition: color .2s;
+}
+.where-list li button:hover, .where-list li button[aria-expanded="true"] { color: var(--ink); }
+.where-list li p { max-width: 38ch; padding-bottom: 18px; color: var(--ink); }
+.where-list li p a { display: inline-block; margin-top: 10px; color: var(--stone); }
+
+/* Orçamento */
+.quote { padding: var(--gap-section) var(--m) 0; }
+.quote-head { display: grid; grid-template-columns: 7fr 5fr; gap: 24px 48px; align-items: end; }
+.quote-head p { max-width: 42ch; }
+.quote-grid { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(32px, 5vw, 80px); margin-top: 56px; align-items: start; }
+.q { border: 0; margin: 0 0 44px; padding: 0; }
+.q legend { padding: 0; margin-bottom: 14px; font-size: var(--step-lead); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips button {
+  border: 0; background: var(--surface); min-height: 46px; padding: 10px 18px;
+  transition: background .15s, color .15s, transform .15s var(--ease);
+}
+.chips button:hover { background: #2c2f2c; }
+.chips button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.chips button:active { transform: scale(.96); }
+.field { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; max-width: 440px; }
+.field[hidden] { display: none; }
+.field input { font: inherit; padding: 13px 16px; border: 0; background: var(--surface); color: var(--ink); }
+.swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
+.swatches button { border: 0; padding: 0; background: none; text-align: left; display: flex; flex-direction: column; gap: 8px; }
+.swatches img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; outline: 3px solid transparent; outline-offset: 3px; transition: outline-color .2s, transform .2s var(--ease); }
+.swatches button:hover img { transform: scale(1.03); }
+.swatches button[aria-pressed="true"] img { outline-color: var(--stone); }
+.swatches button[aria-pressed="true"] span { color: var(--stone); }
+.swatches .help { justify-content: center; background: var(--surface); min-height: 100%; padding: 16px; aspect-ratio: auto; }
+
+.stone { position: sticky; top: 24px; display: grid; }
+.stone > img { grid-area: 1 / 1; width: 100%; height: 100%; min-height: 560px; object-fit: cover; transition: opacity .35s; }
+.stone > img.swap { opacity: .2; }
+.slip { grid-area: 1 / 1; align-self: end; margin: 24px; background: var(--ink); color: var(--bg); padding: 24px; }
+.slip-title { font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; font-size: var(--step-small); }
+.slip dl { margin: 12px 0 20px; }
+.slip dt { font-size: var(--step-small); color: #5a5750; margin-top: 12px; }
+.slip dd { margin: 2px 0 0; font-weight: 600; }
+.slip dd.empty { font-weight: 400; color: #77736b; }
+.slip .btn { background: var(--bg); color: var(--ink); }
+.slip .btn:hover { background: #2b2d2b; }
+.slip-note { margin-top: 10px; font-size: var(--step-small); color: #5a5750; }
+
+/* Como trabalhamos */
+.how { padding: var(--gap-section) 0 0; }
+.how-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; padding: 0 var(--m); }
+.how-btns { display: flex; gap: 8px; }
+.how-btns button { width: 48px; height: 48px; border: 0; background: var(--surface); font-size: 1.25rem; transition: background .2s; }
+.how-btns button:hover { background: var(--ink); color: var(--bg); }
+.how-bar { margin: 24px var(--m) 0; height: 6px; background: var(--surface); }
+.how-bar i { display: block; height: 100%; width: 25%; background: var(--ink); transition: width .2s; }
+.how-row {
+  list-style: none; margin: 40px 0 0; padding: 0 var(--m) 8px; display: flex; gap: 32px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--m); scrollbar-width: none;
+}
+.how-row::-webkit-scrollbar { display: none; }
+.how-row li { flex: 0 0 clamp(260px, 26vw, 360px); scroll-snap-align: start; display: flex; flex-direction: column; }
+.how-row h3 { font-size: var(--step-lead); font-weight: 600; letter-spacing: 0; }
+.how-row p { margin-top: 10px; color: var(--muted); min-height: 5.2em; }
+.how-row img { margin-top: var(--gap); width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+
+/* Prova */
+.proof { padding: var(--gap-section) var(--m); }
+.proof-text { font-size: clamp(1.75rem, 1rem + 2.6vw, 3.25rem); line-height: 1.15; max-width: 28ch; color: var(--muted); letter-spacing: -0.015em; }
+.proof-text b { font-weight: 400; color: var(--ink); }
+.proof-text span { transition: color .4s; }
+.proof-text span.on { color: var(--stone); }
+.proof .link { display: inline-block; margin-top: 32px; }
+
+/* Visite */
+.visit { position: relative; min-height: 100svh; }
+.visit-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.75); }
+.card {
+  position: sticky; top: 60px; margin: 0 60px 0 auto; width: 400px; max-width: calc(100% - 32px);
+  background: var(--stone); color: var(--stone-ink); border-radius: 8px; padding: 32px; display: flex; flex-direction: column; gap: 16px;
+  transform: translateY(60px); margin-bottom: 160px;
+}
+.card h2 { font-size: 2rem; }
+.card address { font-style: normal; }
+.card .btn { background: var(--stone-ink); color: var(--stone); margin-top: 8px; }
+
+/* Rodapé */
+.footer { background: var(--stone); color: var(--stone-ink); min-height: 100svh; display: grid; grid-template-rows: auto 1fr auto auto; padding: 40px var(--m) 24px; }
+.footer-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; font-size: var(--step-small); line-height: 1.6; color: #4a463e; }
+.footer-cols b { color: var(--stone-ink); font-weight: 600; }
+.footer-word { grid-row: 3; width: 100%; height: auto; }
+.footer-word text { font: 600 150px var(--font); fill: var(--stone-ink); letter-spacing: -0.02em; }
+.legal { grid-row: 4; margin-top: 16px; font-size: var(--step-small); color: #4a463e; }
+
+.toast {
+  position: fixed; left: 50%; top: 20px; z-index: 60; transform: translate(-50%, calc(-100% - 40px));
+  background: var(--stone); color: var(--stone-ink); padding: 12px 18px; font-size: var(--step-small);
+  width: max-content; max-width: calc(100% - 32px); transition: transform .3s var(--ease);
+}
+.toast.is-on { transform: translate(-50%, 0); }
+
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+/* Celular */
+@media (max-width: 860px) {
+  .hero { height: auto; min-height: calc(100svh - 34px); }
+  .hero-card { min-height: 70svh; padding: 24px; gap: 22px; }
+  .hero-name { font-size: 0.95rem; }
+  .hero h1 { font-size: clamp(2.6rem, 11vw, 3.6rem); }
+  .hero-facts { font-size: 1.0625rem; }
+  .hero-foot { grid-template-columns: 1fr 1fr; }
+  .hero-foot .btn { grid-column: 1 / -1; grid-row: 1; }
+  .hero-foot .link { justify-self: end; }
+  .where { grid-template-columns: 1fr; padding-top: var(--gap-section); }
+  .where-photo { top: 0; z-index: 2; margin: 0 calc(var(--m) * -1); }
+  .where-photo img { aspect-ratio: 4 / 3; height: 38svh; }
+  .where-photo .cap { display: none; }
+  .where-list { grid-column: 1; margin-top: 32px; }
+  .where-list ul { margin-top: 24px; }
+  .quote-head, .quote-grid { grid-template-columns: 1fr; }
+  .swatches { grid-template-columns: repeat(2, 1fr); }
+  .stone { position: static; }
+  .stone > img { min-height: 520px; }
+  .slip { margin: 16px; }
+  .how-btns { display: none; }
+  .how-row { gap: 16px; }
+  .how-row li { flex-basis: 72vw; }
+  .how-row img { margin-top: calc(var(--gap) / 2.5); }
+  .visit { min-height: 0; padding-top: 50svh; }
+  .visit-img { height: 70svh; bottom: auto; }
+  .card { position: relative; top: auto; transform: none; margin: 0 var(--m); width: auto; max-width: none; padding: 24px; }
+  .footer { min-height: 80svh; }
+  .footer-cols { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}

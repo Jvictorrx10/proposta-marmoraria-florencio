@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Demonstração com o nome de uma empresa real: fora do Google até a Florencio aprovar. -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Marmoraria Florencio — Sítio Cercado, Curitiba</title>
+  <meta name="description" content="Marmoraria no Sítio Cercado, Curitiba. Bancadas de cozinha e banheiro, escadas e soleiras em granito, mármore e quartzito. Nota 5,0 no Google. Peça o orçamento pelo WhatsApp.">
+  <meta name="theme-color" content="#151615">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23151615'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23d8cdb8' font-family='sans-serif'%3EF%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1778272617899-038ae0330471?w=2000&h=1250&fit=crop&fm=webp&q=70">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Marmoraria Florencio",
+    "description": "Marmoraria: bancadas, escadas e soleiras em granito, mármore e quartzito.",
+    "telephone": "+55-41-99951-0642",
+    "address": { "@type": "PostalAddress", "streetAddress": "R. Padre Francisco Van de Water, 101", "addressLocality": "Curitiba", "addressRegion": "PR", "postalCode": "81920-370", "addressCountry": "BR" },
+    "areaServed": ["Sítio Cercado", "Curitiba"],
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "89" }
+  }
+  </script>
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <p class="demo-bar">Proposta de site — demonstração. Fotos e texturas ilustrativas.</p>
+
+  <!-- Topo: a bancada no escuro e um cartão cor de pedra -->
+  <header class="hero" id="topo">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1778272617899-038ae0330471?w=2000&h=1250&fit=crop&fm=webp&q=70" width="2000" height="1250" alt="Bancada de granito preto com cuba e torneira escura (imagem ilustrativa)">
+    <div class="hero-card">
+      <p class="hero-name"><span>Marmoraria</span><span>Florencio</span><span>Curitiba</span></p>
+      <h1>Acabamento que aparece.</h1>
+      <p class="hero-facts">Bancadas, escadas e soleiras em granito, mármore e quartzito<br>Sítio Cercado, Curitiba<br>Nota 5,0 no Google, com 89 avaliações</p>
+      <div class="hero-foot">
+        <span class="note">Imagem ilustrativa</span>
+        <a class="btn" href="#orcamento">Pedir orçamento</a>
+        <a class="link" href="#visite">Como chegar</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Onde a pedra entra: foto fixa, lista ativa -->
+    <section class="where" id="ambientes" aria-labelledby="where-title">
+      <div class="where-photo"><img data-where-img src="https://images.unsplash.com/photo-1778272617843-bdda47b64bad?w=1000&h=1250&fit=crop&fm=webp&q=70" width="1000" height="1250" alt="" loading="lazy"><p class="cap">Imagem ilustrativa</p></div>
+      <div class="where-list">
+        <h2 id="where-title" class="reveal">Onde a pedra entra</h2>
+        <ul data-where></ul>
+      </div>
+    </section>
+
+    <!-- Orçamento em 3 perguntas, com a pedra escolhida como fundo da ficha -->
+    <section class="quote" id="orcamento" aria-labelledby="quote-title">
+      <div class="quote-head">
+        <h2 id="quote-title" class="reveal">Escolha a pedra, peça o orçamento</h2>
+        <p class="reveal">Três perguntas. A mensagem vai pronta para o WhatsApp da Florencio, que confirma a pedra disponível, a medida e o valor.</p>
+      </div>
+      <div class="quote-grid">
+        <div class="quote-form">
+          <fieldset class="q">
+            <legend>Onde vai a pedra?</legend>
+            <div class="chips" data-q="onde" data-multi></div>
+          </fieldset>
+          <fieldset class="q">
+            <legend>Você tem a medida?</legend>
+            <div class="chips" data-q="medida"></div>
+            <label class="field" data-medida-field hidden>Medida aproximada
+              <input type="text" inputmode="text" placeholder="Ex.: bancada de 2,40 x 0,60 m" data-medida-text>
+            </label>
+          </fieldset>
+          <fieldset class="q">
+            <legend>Qual pedra?</legend>
+            <div class="swatches" data-pedras></div>
+            <p class="note">Texturas ilustrativas. A Florencio confirma as cores disponíveis.</p>
+          </fieldset>
+        </div>
+        <aside class="stone" data-stone aria-live="polite">
+          <img data-stone-img src="https://images.unsplash.com/photo-1585749864755-f1adb4ec8e29?w=1000&h=1250&fit=crop&fm=webp&q=70" width="1000" height="1250" alt="" loading="lazy">
+          <div class="slip">
+            <p class="slip-title">Florencio · pedido de orçamento</p>
+            <dl data-slip></dl>
+            <button class="btn btn-wide" type="button" data-send>Enviar no WhatsApp</button>
+            <p class="slip-note">Abre o WhatsApp com a mensagem pronta. Nada é enviado sem você tocar em enviar.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Como trabalhamos: fileira arrastável -->
+    <section class="how" id="como-trabalhamos" aria-labelledby="how-title">
+      <div class="how-head">
+        <h2 id="how-title" class="reveal">Explicado antes de cortar</h2>
+        <div class="how-btns"><button type="button" data-how="-1" aria-label="Voltar">←</button><button type="button" data-how="1" aria-label="Avançar">→</button></div>
+      </div>
+      <div class="how-bar" aria-hidden="true"><i data-how-bar></i></div>
+      <ol class="how-row" data-how-row>
+        <li style="--gap:110px"><h3>Primeiro, a medida</h3><p>Tudo começa pela medida certa, com o recorte da pia, do cooktop e das tomadas.</p><img src="https://images.unsplash.com/photo-1523901839036-a3030662f220?w=640&h=800&fit=crop&fm=webp&q=70" width="640" height="800" alt="Fita métrica (imagem ilustrativa)" loading="lazy"></li>
+        <li style="--gap:40px"><h3>Depois, a pedra</h3><p>Você entende a diferença entre granito, mármore e quartzito e escolhe com calma, com quem trabalha com pedra todo dia.</p><img src="https://images.unsplash.com/photo-1554296048-b59c9fca4857?w=640&h=800&fit=crop&fm=webp&q=70" width="640" height="800" alt="Chapa de mármore cinza com veios (imagem ilustrativa)" loading="lazy"></li>
+        <li style="--gap:140px"><h3>Tudo explicado</h3><p>Antes de cortar, a equipe mostra como fica cada emenda, borda e recorte. É o que mais aparece nas avaliações.</p><img src="https://images.unsplash.com/photo-1695542958346-d51b0c2f1917?w=640&h=800&fit=crop&fm=webp&q=70" width="640" height="800" alt="Bancada escura com veios claros (imagem ilustrativa)" loading="lazy"></li>
+        <li style="--gap:70px"><h3>Por fim, a instalação</h3><p>A peça chega cortada e com acabamento nas bordas, e é instalada no dia combinado.</p><img src="https://images.unsplash.com/photo-1754788358645-d6e6cca12e25?w=640&h=800&fit=crop&fm=webp&q=70" width="640" height="800" alt="Lavatório com bancada de mármore (imagem ilustrativa)" loading="lazy"></li>
+      </ol>
+    </section>
+
+    <!-- Prova: uma frase, um elogio aceso por vez -->
+    <section class="proof" aria-labelledby="proof-title">
+      <p id="proof-title" class="proof-text reveal"><b>Nota 5,0 no Google.</b> Nas 89 avaliações, quem contratou elogia <span data-lit>o acabamento</span>, <span data-lit>o preço</span>, <span data-lit>a rapidez</span>, <span data-lit>a explicação antes da obra</span> e <span data-lit>a equipe</span>.</p>
+      <a class="link reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Marmoraria+Florencio+R.+Padre+Francisco+Van+de+Water+101+Curitiba" target="_blank" rel="noopener">Ler as avaliações no Google</a>
+    </section>
+
+    <!-- Visite: foto e cartão -->
+    <section class="visit" id="visite" aria-labelledby="visit-title">
+      <img class="visit-img" src="https://images.unsplash.com/photo-1765766601532-90e9b96320c8?w=2000&h=1250&fit=crop&fm=webp&q=70" width="2000" height="1250" alt="Cozinha escura com bancadas de pedra (imagem ilustrativa)" loading="lazy">
+      <div class="card">
+        <h2 id="visit-title">Visite a marmoraria</h2>
+        <address>R. Padre Francisco Van de Water, 101<br>Sítio Cercado, Curitiba · CEP 81920-370</address>
+        <p>Consulte o horário pelo telefone<br><a href="tel:+5541999510642">(41) 99951-0642</a></p>
+        <p><a href="https://www.google.com/maps/dir/?api=1&amp;destination=R.+Padre+Francisco+Van+de+Water,+101+-+S%C3%ADtio+Cercado,+Curitiba+-+PR" target="_blank" rel="noopener">Como chegar</a></p>
+        <button class="btn btn-wide" type="button" data-ask-general>Chamar no WhatsApp</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé: colunas em cima, o nome embaixo -->
+  <footer class="footer">
+    <div class="footer-cols">
+      <p><b>Endereço</b><br>R. Padre Francisco Van de Water, 101<br>Sítio Cercado, Curitiba - PR</p>
+      <p><b>No site</b><br><a href="#ambientes">Onde a pedra entra</a><br><a href="#orcamento">Orçamento</a><br><a href="#como-trabalhamos">Como trabalhamos</a></p>
+      <p><b>Contato</b><br><a href="tel:+5541999510642">(41) 99951-0642</a><br><a href="https://www.google.com/maps/search/?api=1&amp;query=Marmoraria+Florencio+Curitiba" target="_blank" rel="noopener">Google Maps</a></p>
+      <p><b>Avaliações</b><br>Nota 5,0<br>89 avaliações no Google</p>
+    </div>
+    <svg class="footer-word" viewBox="0 0 1000 150" aria-label="Florencio" role="img"><text x="0" y="128" textLength="1000" lengthAdjust="spacingAndGlyphs">FLORENCIO</text></svg>
+    <p class="legal">Proposta de site — demonstração feita por João Victor. Não é o site oficial da Marmoraria Florencio. Fotos e texturas ilustrativas do Unsplash, a serem trocadas pelas fotos das obras.</p>
+  </footer>
+
+  <p class="toast" role="status" data-toast></p>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
