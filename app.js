@@ -120,7 +120,7 @@
     ];
     wa(linhas.filter(Boolean).join('\n'));
   });
-  $('[data-ask-general]').addEventListener('click', () => wa(`Oi, Florencio! Vim pelo site e queria tirar uma dúvida.\n${pageUrl()}`));
+  $$('[data-ask-general]').forEach(b => b.addEventListener('click', () => wa(`Oi, Florencio! Vim pelo site e queria tirar uma dúvida.\n${pageUrl()}`)));
 
   // ---------- Como trabalhamos: arrastar e botões ----------
   const row = $('[data-how-row]');
