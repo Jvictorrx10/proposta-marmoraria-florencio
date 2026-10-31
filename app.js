@@ -98,7 +98,12 @@
     $$('[data-pedra]', pedrasEl).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.pedra === escolha.pedra)));
     const p = D.pedras.find(x => x.id === escolha.pedra);
     const stoneImg = $('[data-stone-img]');
-    if (p) { swapImg(stoneImg, img(p.foto, 1000, 1250)); stoneImg.alt = `${p.nome} (textura ilustrativa)`; }
+    if (p && stoneImg.dataset.pedra !== p.id) {
+      stoneImg.dataset.pedra = p.id;
+      swapImg(stoneImg, img(p.foto, 1000, 1250));
+      stoneImg.alt = `${p.nome} (textura ilustrativa)`;
+      document.dispatchEvent(new CustomEvent('florencio:pedra'));
+    }
     const linhas = [['Onde', escolha.onde.join(', ')], ['Medida', medidaTexto()], ['Pedra', pedraNome()]];
     $('[data-slip]').innerHTML = linhas.map(([k, v]) => `<dt>${k}</dt><dd class="${v ? '' : 'empty'}">${v || 'a escolher'}</dd>`).join('');
   }
@@ -141,19 +146,7 @@
     lit[k].classList.remove('on'); k = (k + 1) % lit.length; lit[k].classList.add('on');
   }, 2000);
 
-  // ---------- Entradas ----------
-  const io = 'IntersectionObserver' in window && new IntersectionObserver(entries => {
-    entries.forEach(en => {
-      if (!en.isIntersecting) return;
-      en.target.classList.add('is-in');
-      io.unobserve(en.target);
-    });
-  }, { rootMargin: '0px 0px -8% 0px' });
-  $$('.reveal').forEach(el => {
-    const sib = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
-    el.style.transitionDelay = `${sib.indexOf(el) * 80}ms`;
-    if (io) io.observe(el); else el.classList.add('is-in');
-  });
+  // As entradas ao rolar ficam no motion.js (GSAP).
 
   renderWhere();
   renderQuote();

@@ -27,7 +27,14 @@
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "89" }
   }
   </script>
-  <script>document.documentElement.classList.add('js')</script>
+  <script>
+    // Movimento (GSAP). Se não carregar em 2,5s, mostra tudo parado.
+    document.documentElement.classList.add('js');
+    setTimeout(() => { if (!document.documentElement.classList.contains('motion')) document.documentElement.classList.add('no-motion'); }, 2500);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="motion.js" defer></script>
 </head>
 <body>
   <p class="demo-bar">Proposta de site — demonstração. Fotos e texturas ilustrativas.</p>
@@ -35,7 +42,7 @@
   <!-- Topo: a bancada no escuro e um cartão cor de pedra -->
   <header class="hero" id="topo">
     <img class="hero-img" src="https://images.unsplash.com/photo-1778272617899-038ae0330471?w=2000&h=1250&fit=crop&fm=webp&q=70" width="2000" height="1250" alt="Bancada de granito preto com cuba e torneira escura (imagem ilustrativa)">
-    <div class="hero-card">
+    <div class="hero-card intro">
       <p class="hero-name"><span>Marmoraria</span><span>Florencio</span><span>Curitiba</span></p>
       <h1>Acabamento que aparece.</h1>
       <p class="hero-facts">Bancadas, escadas e soleiras em granito, mármore e quartzito<br>Sítio Cercado, Curitiba<br>Nota 5,0 no Google, com 89 avaliações</p>
@@ -59,6 +66,7 @@
 
     <!-- Orçamento em 3 perguntas, com a pedra escolhida como fundo da ficha -->
     <section class="quote" id="orcamento" aria-labelledby="quote-title">
+      <p class="backtype" aria-hidden="true">GRANITO · MÁRMORE · QUARTZITO</p>
       <div class="quote-head">
         <h2 id="quote-title" class="reveal">Escolha a pedra, peça o orçamento</h2>
         <p class="reveal">Três perguntas. A mensagem vai pronta para o WhatsApp da Florencio, que confirma a pedra disponível, a medida e o valor.</p>
@@ -111,7 +119,7 @@
 
     <!-- Prova: uma frase, um elogio aceso por vez -->
     <section class="proof" aria-labelledby="proof-title">
-      <p id="proof-title" class="proof-text reveal"><b>Nota 5,0 no Google.</b> Nas 89 avaliações, quem contratou elogia <span data-lit>o acabamento</span>, <span data-lit>o preço</span>, <span data-lit>a rapidez</span>, <span data-lit>a explicação antes da obra</span> e <span data-lit>a equipe</span>.</p>
+      <p id="proof-title" class="proof-text reveal"><b>Nota <span data-count="5" data-dec="1">5,0</span> no Google.</b> Nas <span data-count="89">89</span> avaliações, quem contratou elogia <span data-lit>o acabamento</span>, <span data-lit>o preço</span>, <span data-lit>a rapidez</span>, <span data-lit>a explicação antes da obra</span> e <span data-lit>a equipe</span>.</p>
       <a class="link reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Marmoraria+Florencio+R.+Padre+Francisco+Van+de+Water+101+Curitiba" target="_blank" rel="noopener">Ler as avaliações no Google</a>
     </section>
 

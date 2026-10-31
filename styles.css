@@ -60,8 +60,6 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .hero-foot .link { justify-self: end; }
 .hero-foot .btn { background: var(--stone-ink); color: var(--stone); }
 .hero-foot .btn:hover { background: #2b2d2b; }
-.js .hero-card { animation: rise 1s var(--ease) both .15s; }
-@keyframes rise { from { opacity: 0; transform: translateY(28px); } }
 
 /* Onde a pedra entra */
 .where { display: grid; grid-template-columns: 5fr 1fr 6fr; padding: var(--gap-section) var(--m) 0; align-items: start; }
@@ -170,8 +168,20 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .toast.is-on { transform: translate(-50%, 0); }
 
-.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
-.js .reveal.is-in { opacity: 1; transform: none; }
+html.js:not(.no-motion) .reveal, html.js:not(.no-motion) .intro { opacity: 0; }
+
+/* Movimento (GSAP) */
+.quote { position: relative; overflow-x: clip; }
+.quote > :not(.backtype) { position: relative; z-index: 1; }
+.backtype {
+  position: absolute; left: 0; top: 0; margin: 0; z-index: 0; pointer-events: none;
+  font-size: clamp(6rem, 18vw, 18rem); font-weight: 300; line-height: .8; white-space: nowrap;
+  color: #262926; letter-spacing: -0.04em;
+}
+.stone > img.wipe { clip-path: inset(0 0 0 0); }
+.stone { overflow: hidden; }
+.hero, .visit { overflow: hidden; }
+.where, .how { overflow-x: clip; }
 
 /* Celular */
 @media (max-width: 860px) {
@@ -207,5 +217,5 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-  .js .reveal { opacity: 1; transform: none; }
+  html.js .reveal, html.js .intro { opacity: 1; }
 }
